@@ -64,5 +64,4 @@ public class Usuario extends GenericDomain {
 		return "Usuario [usuario=" + usuario + ", dataNascimento=" + dataNascimento + ", rg=" + rg + ", endereco="
 				+ endereco + "]";
 	}
-
 }
