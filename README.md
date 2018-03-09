@@ -8,11 +8,11 @@ O projeto deverá rodar em uma máquina linux.
 
 ### Prerequisitos
 
-Servidor linux (qualquer distribuição)
-Java 1.8
-Database postgreSql 9.1
-Wildfly 10.1.0
-Plugin google chrome Advanced REST client
+- Servidor linux (qualquer distribuição)
+- Java 1.8
+- Database postgreSql 9.1
+- Wildfly 10.1.0
+- Plugin google chrome Advanced REST client
 ### Instalação
 
 - O projeto deverá ser feito o deploy do arquivo DesafioCRUD.war em uma instância do wildfly
