@@ -1,4 +1,4 @@
-# Desafio CRUd
+# Desafio CRUD
 
 Desafio de criar um WebService para realizar as operações de CRUD
 
