@@ -1,8 +1,6 @@
 package services;
 
-import java.util.Date;
 import java.util.List;
-
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -19,28 +17,17 @@ import domain.Usuario;
 public class UsuarioService {
 
 	@GET
-	public String exibir() {
-
-		Usuario usuario = new Usuario();
-
-		// usuario.setUsuario("Maria");
-		// usuario.setDataNascimento(new Date());
-		// usuario.setEndereco("rua dois");
-		// usuario.setRg("1234");
+	public String listar() {
 
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 
-		// usuarioDAO.salvar(usuario);
-
 		List<Usuario> usuarios = usuarioDAO.listar();
-		// usuario = usuarioDAO.buscarPorCodigo(usuarios.get(0).getId());
-		// usuarioDAO.excluir(usuario);
 
 		Gson gson = new Gson();
 
 		String json = gson.toJson(usuarios);
 
-		return "Teste Restful Usuariossss" + json;
+		return json;
 	}
 
 	@GET
@@ -55,7 +42,7 @@ public class UsuarioService {
 
 		String json = gson.toJson(usuario);
 
-		return "Teste Restful Usuariossss" + json;
+		return json;
 	}
 
 	@POST
@@ -67,34 +54,29 @@ public class UsuarioService {
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		usuarioDAO.salvar(usuario);
 
-		return "{\"Status\":true,\"MSG\":\"Usuário cadastrado com sucesso\",\"ID\":" 
-		       + usuario.getId() + "}";
+		return "{\"Status\":true,\"MSG\":\"Usuário cadastrado com sucesso\",\"ID\":" + usuario.getId() + "}";
 	}
-	
+
 	@PUT
 	public String editar(String json) {
 		Gson gson = new Gson();
 		Usuario usuario = gson.fromJson(json, Usuario.class);
-		
+
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		usuarioDAO.editar(usuario);
-		return "teste";
-	} 
-	
-	
+		return "{\"Status\":true,\"MSG\":\"Usuário atualizado com sucesso\"," + json + "}";
+	}
+
 	@DELETE
-	public String excluir(String json){
-		
+	public String excluir(String json) {
+
 		Gson gson = new Gson();
 		Usuario usuario = gson.fromJson(json, Usuario.class);
-		
+
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		usuarioDAO.excluir(usuario);
-		
-		return "teste";
-		
-	}
-	
-	
 
+		return "{\"Status\":true,\"MSG\":\"Usuário " + usuario.getNome() + " deletado com sucesso\"}";
+
+	}
 }

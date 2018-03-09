@@ -1,67 +1,50 @@
 package domain;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @SuppressWarnings("serial")
 public class Usuario extends GenericDomain {
 
-	// classe de entidade onde s�o declarados os m�todos e atributos da entidade
-	// � uma extens�o da classe GenericDomain onde � gerado os ID
+	// classe de entidade onde são declarados os métodos e atributos da entidade
+	// é uma extensão da classe GenericDomain onde é gerado os ID
 
 	@Column(length = 40, nullable = false)
-	private String usuario;
-
-	@Column(nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataNascimento;
+	private String nome;
 
 	@Column(length = 40, nullable = true)
-	private String rg;
+	private String login;
 
 	@Column(length = 40, nullable = false)
-	private String endereco;
+	private String senha;
 
-	public String getUsuario() {
-		return usuario;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public Date getDataNascimento() {
-		return dataNascimento;
+	public String getLogin() {
+		return login;
 	}
 
-	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
-	public String getRg() {
-		return rg;
+	public String getSenha() {
+		return senha;
 	}
 
-	public void setRg(String rg) {
-		this.rg = rg;
-	}
-
-	public String getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	@Override
 	public String toString() {
-		return "Usuario [usuario=" + usuario + ", dataNascimento=" + dataNascimento + ", rg=" + rg + ", endereco="
-				+ endereco + "]";
+		return "Usuario [nome=" + nome + ", login=" + login + ", senha=" + senha + "]";
 	}
 }
