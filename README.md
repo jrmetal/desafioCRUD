@@ -26,7 +26,7 @@ O projeto deverá rodar em uma máquina linux.
 - Exemplo: rodar o arquivo domain.sh que está localizado no diretório /bin do wildfly 
 
 - Para o teste será necessário a utilização da extenção do navegador google chrome Advanced REST client nele poderá ser realizado todas as operações de CRUD
-- http://localhost:8280/DesafioCRUD/restUsuario/usuario http://localhost:8380/DesafioCRUD/restUsuario/usuario
+- Urls para acesso aos serviços http://localhost:8280/DesafioCRUD/restUsuario/usuario http://localhost:8380/DesafioCRUD/restUsuario/usuario
 
 
 ## Built With
