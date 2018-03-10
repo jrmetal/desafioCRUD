@@ -17,12 +17,11 @@ O projeto deverá rodar em uma máquina linux.
 ### Instalação
 
 - No projeto deverá ser feito o deploy do arquivo DesafioCRUD.war em uma instância do wildfly
-- É necessário criar uma dataBase com o nome desafioCRUD com usuário: teste, senha: teste( caso desejar pode ser criado com outro usuário ou senha porém deverá alterar os dados no arquivo hibernate.cfg.xml)
-
+- É necessário criar uma dataBase com o nome desafioCRUD com usuário: teste, senha: teste( caso desejar pode ser criado com outro usuário ou senha porém deverá alterar os dados no arquivo hibernate.cfg.xml) e restaurar a base de dados disponível no dropbox
 
 ## Iniciar e teste
 
-- O arquivo contendo o Wildfly deverá ser extraído e iniciado como domain
+- O arquivo contendo o Wildfly(disponível no link do dropbox) deverá ser extraído e iniciado em modo Domain
 - Exemplo: rodar o arquivo domain.sh que está localizado no diretório /bin do wildfly 
 
 - Para o teste será necessário a utilização da extenção do navegador google chrome Advanced REST client nele poderá ser realizado todas as operações de CRUD
@@ -30,7 +29,7 @@ O projeto deverá rodar em uma máquina linux.
 
 
 ## Built With
-
+* [https://www.dropbox.com/sh/kdaz6a61ws71odt/AADXXO4GnPuPGlJ115__rz2ja?dl=0 - dropBox arquivos.
 * [http://hibernate.org/) - database FrameWork utilizado
 * [Maven](https://maven.apache.org/) - Gerenciamento de dependência
 * [https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo) - Ferramenta para testes.
