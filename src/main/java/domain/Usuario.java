@@ -7,9 +7,6 @@ import javax.persistence.Entity;
 @SuppressWarnings("serial")
 public class Usuario extends GenericDomain {
 
-	// classe de entidade onde são declarados os métodos e atributos da entidade
-	// é uma extensão da classe GenericDomain onde é gerado os ID
-
 	@Column(length = 40, nullable = false)
 	private String nome;
 

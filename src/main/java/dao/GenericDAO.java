@@ -13,32 +13,29 @@ import util.HibernateUtil;
 
 public class GenericDAO<Entidade> {
 
-	private Class<Entidade> classe; // toda vez que é instaciada a clesse generica é passado para o classe a classe
-									// filha
+	private Class<Entidade> classe;
 
 	@SuppressWarnings("unchecked")
-	public GenericDAO() { // API java reflection utilizado para reslver problema do tipo de entidade
+	public GenericDAO() {
 		this.classe = (Class<Entidade>) ((ParameterizedType) getClass().getGenericSuperclass())
 				.getActualTypeArguments()[0];
 	}
 
 	public void salvar(Entidade entidade) {
-		Session sessao = HibernateUtil.getFabricaDeSessoes().openSession(); // captura a uma sessão
-		Transaction transacao = null; // cria uma transação isso garente que a transaão vai ser completada caso nao
-										// complete ele faz um rollback
+		Session sessao = HibernateUtil.getFabricaDeSessoes().openSession();
+		Transaction transacao = null;
 		try {
-			transacao = sessao.beginTransaction(); // transação iniciado
-			sessao.save(entidade); // estou passando a entidade que será salva, como é uma classe generica ele pode
-									// pode-se assumir qualquer entidade
-			transacao.commit(); // comfirma a tranção
-		} catch (RuntimeException e) { // hibernate usa execoes de tempo de execuçoes
+			transacao = sessao.beginTransaction();
+			sessao.save(entidade);
+
+			transacao.commit();
+		} catch (RuntimeException e) {
 			if (transacao != null) {
-				transacao.rollback(); // aqui ele verifica se existe um transção iniciada, como está no cacth
-										// siginifica que algo de errado aconteceu, em seguida faco o rollback
+				transacao.rollback();
 			}
-			throw e; // propaga o erro para outras camadas da aplicação
+			throw e;
 		} finally {
-			sessao.close(); // fecho a sessão
+			sessao.close();
 		}
 	}
 
@@ -63,8 +60,7 @@ public class GenericDAO<Entidade> {
 	public List<Entidade> listar() {
 		Session sessao = HibernateUtil.getFabricaDeSessoes().openSession();
 		try {
-			Criteria consulta = sessao.createCriteria(classe); // Criteria vem do hibernate para manipulação do banco
-																// sem o uso direto do SQL
+			Criteria consulta = sessao.createCriteria(classe);
 			List<Entidade> resultado = consulta.list();
 			return resultado;
 		} catch (RuntimeException erro) {
@@ -79,7 +75,7 @@ public class GenericDAO<Entidade> {
 		Session sessao = HibernateUtil.getFabricaDeSessoes().openSession();
 		try {
 			Criteria consulta = sessao.createCriteria(classe);
-			consulta.add(Restrictions.idEq(id)); // restriction tem a mesma fun��o do where em SQL
+			consulta.add(Restrictions.idEq(id));
 			Entidade resultado = (Entidade) consulta.uniqueResult();
 			return resultado;
 		} catch (RuntimeException erro) {
@@ -106,8 +102,8 @@ public class GenericDAO<Entidade> {
 			sessao.close();
 		}
 	}
-	// neste metodo abaixo estou exemplificando como � utilizado o SQL nativo
 
+	// neste metodo abaixo estou exemplificando como é utilizado o SQL nativo
 	public void execultaQuery(String querySql) {
 		Session sessao = HibernateUtil.getFabricaDeSessoes().openSession();
 
@@ -145,5 +141,4 @@ public class GenericDAO<Entidade> {
 			sessao.close();
 		}
 	}
-
 }

@@ -7,8 +7,7 @@ import org.hibernate.service.ServiceRegistry;
 
 public class HibernateUtil {
 
-	
-	private static SessionFactory fabricaDeSessoes = criarFabricaDeSessoes(); // recebe o retorno do metodo 
+	private static SessionFactory fabricaDeSessoes = criarFabricaDeSessoes();
 
 	public static SessionFactory getFabricaDeSessoes() {
 		return fabricaDeSessoes;
@@ -16,11 +15,12 @@ public class HibernateUtil {
 
 	private static SessionFactory criarFabricaDeSessoes() {
 		try {
-			Configuration configuracao = new Configuration().configure();  // busca e lê  as configurações do hibernate.cfg.xml
+			Configuration configuracao = new Configuration().configure();
 
-			ServiceRegistry registro = new StandardServiceRegistryBuilder().applySettings(configuracao.getProperties()).build(); // registra o servico do hibenrate 
+			ServiceRegistry registro = new StandardServiceRegistryBuilder().
+					applySettings(configuracao.getProperties()).build();
 
-			SessionFactory fab = configuracao.buildSessionFactory(registro); // constroi a fabrica de sessoes 
+			SessionFactory fab = configuracao.buildSessionFactory(registro);
 
 			return fab;
 		} catch (Throwable ex) {
@@ -30,7 +30,3 @@ public class HibernateUtil {
 	}
 
 }
-	
-	
-	
-
